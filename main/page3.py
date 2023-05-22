@@ -45,3 +45,6 @@ class Page3:
                 .set_y(self.rockets[i].y + self.migyungs[i].h) \
                 .render()
             self.rockets[i].render().particle()
+        
+        if all(rocket.is_collide_by_top() or rocket.is_collide_by_right() for rocket in self.rockets):
+            Page.next()
