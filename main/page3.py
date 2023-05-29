@@ -15,6 +15,8 @@ class Page3:
         self.migyungs = []
         frameRate(self.frame_rate)
         
+        self.textImage = loadImage("text2.png")
+        
         self.stars = []
         for i in range(30):  # adjust amount of stars here
             self.stars.append(PVector(random(width), random(height)))
@@ -44,12 +46,8 @@ class Page3:
         strokeWeight(2)
         for s in self.stars:
             point(s.x, s.y)
-            
-        self.content.set_size(32) \
-            .set_x(200) \
-            .set_y(300) \
-            .set_content("page3") \
-            .render()
+        
+        image(self.textImage, 100, 200, 500, 130)
         
         for i, value in enumerate(self.migyungs):
             self.migyungs[i].set_x(self.rockets[i].x + self.migyungs[i].w) \

@@ -12,17 +12,9 @@ class Page1:
         self.migyung.load_image()
         self.rocket.load_image()
         
-            
         frameRate(self.frame_rate)
     
     def render(self):
-    
-            
-        self.content.set_size(32) \
-            .set_x(200) \
-            .set_y(300) \
-            .set_content("page1") \
-            .render()
 
         self.migyung.set_x(self.rocket.x + self.migyung.w) \
             .set_y(self.rocket.y + self.migyung.h) \
