@@ -27,8 +27,10 @@ class Page1_1:
         image(self.textImage, 100, 200, 500, 130)
         
         # Draw fireworks)
+        if self.firework.exploded:
+            self.firework.update()
         self.firework.show()
-                #self.fireworks.remove(firework)
-
-            
-        #Page.next()
+        
+        if self.firework.done():
+            firework = None
+            Page.next()

@@ -36,7 +36,8 @@ def keyPressed():
     current = Page.current;
     
     if current == 1:
-        pages[current].firework.update()
+        if not pages[current].firework.exploded:
+            pages[current].firework.update()
         
 def mousePressed():
     if len(pages) - 1 == Page.current:
@@ -49,7 +50,7 @@ def mousePressed():
                 Page.next()
         
     if Page.current == 1:
-        Page.next()
+        #Page.next()
         pass
         #rocket = pages[Page.current].rocket
         #if rocket.x < mouseX < rocket.x + rocket.w and rocket.y - rocket.h/2 < mouseY < rocket.y + rocket.h/2:
