@@ -15,6 +15,10 @@ class Page3:
         self.migyungs = []
         frameRate(self.frame_rate)
         
+        self.stars = []
+        for i in range(30):  # adjust amount of stars here
+            self.stars.append(PVector(random(width), random(height)))
+            
         for i in range(10):
             rand = random(500, 1000)
             self.rockets.append(Rocket())
@@ -34,6 +38,13 @@ class Page3:
                 .particle()
         
     def render(self):
+        
+        # Draw stars
+        stroke(255)
+        strokeWeight(2)
+        for s in self.stars:
+            point(s.x, s.y)
+            
         self.content.set_size(32) \
             .set_x(200) \
             .set_y(300) \

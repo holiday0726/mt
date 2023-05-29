@@ -11,9 +11,13 @@ class Page1:
         self.rocket = Rocket()
         self.migyung.load_image()
         self.rocket.load_image()
+        
+            
         frameRate(self.frame_rate)
     
     def render(self):
+    
+            
         self.content.set_size(32) \
             .set_x(200) \
             .set_y(300) \

@@ -13,9 +13,20 @@ class Page2:
         
         self.rocket.set_x(100)\
             .set_y(400)
+            
+        self.stars = []
+        for i in range(30):  # adjust amount of stars here
+            self.stars.append(PVector(random(width), random(height)))
     
     def render(self):
         cursor()
+        
+        # Draw stars
+        stroke(255)
+        strokeWeight(2)
+        for s in self.stars:
+            point(s.x, s.y)
+            
         self.content.set_size(32)\
             .set_x(200)\
             .set_y(300)\

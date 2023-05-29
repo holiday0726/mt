@@ -7,9 +7,7 @@ class Page4:
     def __init__(self):
         self.stars = []
         self.fireworks = []
-        self.stars = []
-        
-    
+
         for i in range(30):  # adjust amount of stars here
             self.stars.append(PVector(random(width), random(height)))
     
