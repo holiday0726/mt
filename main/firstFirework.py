@@ -17,7 +17,7 @@ class FirstFirework:
             self.firework.apply_force(self.gravity)
             self.firework.update()
 
-            if self.count >= 200:
+            if self.count >= 300:
                 self.exploded = True
                 self.explode()
 
