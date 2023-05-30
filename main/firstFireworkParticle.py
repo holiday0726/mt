@@ -20,13 +20,16 @@ class FirstFireworkParticle:
 
     def update(self):
         if self.exploded:
-            self.vel.mult(0.9)
+            self.vel.mult(0.96)
             self.lifespan -= 4
-
-        self.vel.add(self.acc)
-        self.pos.add(self.vel)
+            
+        time_scale = 0.4
+        self.vel.add(PVector.mult(self.acc, time_scale))
+        self.pos.add(PVector.mult(self.vel, time_scale))    
+        #self.vel.add(self.acc)
+        #self.pos.add(self.vel)
         self.acc.mult(0)
-        self.weight  = self.weight  -0.2
+        self.weight  = self.weight * 0.998
 
     def done(self):
         return self.lifespan < 0

@@ -7,6 +7,7 @@ class FirstFirework:
         self.firework = FirstFireworkParticle(width/2-100, height, self.hue, False)
         self.exploded = False
         self.particles = []
+        self.count = 0
 
     def done(self):
         return self.exploded and all(p.done() for p in self.particles)
@@ -16,14 +17,16 @@ class FirstFirework:
             self.firework.apply_force(self.gravity)
             self.firework.update()
 
-            if self.firework.vel.y >= 0:
+            if self.count >= 200:
                 self.exploded = True
                 self.explode()
 
         for particle in self.particles:
             particle.apply_force(self.gravity)
             particle.update()
-
+        
+        self.count = self.count +1
+        
     def explode(self):
         for _ in range(2000):
             p = FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, self.hue, True)
