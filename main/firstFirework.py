@@ -18,7 +18,7 @@ class FirstFirework:
             self.firework.apply_force(self.gravity)
             self.firework.update()
 
-            if self.count >= 300:
+            if self.count >= 400:
                 self.exploded = True
                 self.explode()
 
@@ -29,13 +29,28 @@ class FirstFirework:
         self.count = self.count +1
         
     def explode(self):
-        for _ in range(1000):
-            p = FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 21.25, 0, True, 40)
-            self.particles.append(p)
         
-        for _ in range(1000):
-            p2 = FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 42.5, self.sat, True, 30)
-            self.particles.append(p2)
+        for _ in range(400):
+            self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 42.5, 0, True, 40))
+            self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 42.5, 30, True, 40))
+            self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 42.5, 60, True, 40))
+            self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 42.5, 90, True, 40))
+            
+        for _ in range(400):
+            self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 42.5, self.sat, True, 30))
+            self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 40.5, self.sat, True, 30))
+            self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 38.5, self.sat, True, 25))
+            self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 36.5, self.sat, True, 25))
+            self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 34.5, self.sat, True, 25))
+            
+        
+        
+        
+        
+            
+        
+            
+        
 
     def show(self):
         if not self.exploded:

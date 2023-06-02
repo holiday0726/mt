@@ -23,15 +23,15 @@ class FirstFireworkParticle:
 
     def update(self):
         if self.exploded:
-            self.vel.mult(0.98)
-            self.lifespan -= 4
+            self.vel.mult(0.997)
+            self.lifespan -= 2
+        else :
+            self.pos.x = self.pos.x + random(-1, 1)
+            self.prev_positions1.append(self.pos.copy())
         
-        self.pos.x = self.pos.x + random(-1, 1)
-        self.prev_positions1.append(self.pos.copy())
-        
-        time_scale = 0.3
+        time_scale = 0.1
         self.vel.add(PVector.mult(self.acc, time_scale))
-        self.pos.add(PVector.mult(self.vel, time_scale))    
+        self.pos.add(PVector.mult(self.vel, time_scale))
         #self.vel.add(self.acc)
         #self.pos.add(self.vel)
         self.acc.mult(0)
@@ -39,7 +39,7 @@ class FirstFireworkParticle:
 
 
     def done(self):
-        return self.lifespan < 0
+        return self.lifespan < 50
 
     def show(self):
         if not self.exploded:
@@ -59,16 +59,18 @@ class FirstFireworkParticle:
             stroke(self.hue, self.sat, 255)
             point(self.pos.x, self.pos.y)
         else:
-            strokeWeight(1)  # adjust stroke weight to your needs
+              # adjust stroke weight to your needs
+            strokeWeight(2)
             
             # Draw lines between all subsequent pairs of previous positions
             for i in range(1, len(self.prev_positions2)):
-                stroke(self.hue, self.sat, (30-i)*(self.lifespan*0.001))
+                
+                stroke(self.hue, self.sat, i *(self.lifespan*0.1))
                 line(self.prev_positions2[i-1].x, self.prev_positions2[i-1].y, 
                      self.prev_positions2[i].x, self.prev_positions2[i].y)
                 
-            strokeWeight(random(3,5))
-            stroke(self.hue, self.sat, self.lifespan)
+            strokeWeight(random(2,8))
+            stroke(self.hue, self.sat, 255)
             point(self.pos.x, self.pos.y)
             # Add the current position to the list of previous positions
             self.prev_positions2.append(self.pos.copy())

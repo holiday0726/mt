@@ -24,13 +24,12 @@ class Page1_1:
         for s in self.stars:
             point(s.x, s.y)
             
-        image(self.textImage, 100, 200, 500, 130)
-        
         # Draw fireworks)
         if self.firework.exploded:
             self.firework.update()
         self.firework.show()
         
+        image(self.textImage, 100, 200, 500, 130)
         if self.firework.done():
             firework = None
             Page.next()
