@@ -11,6 +11,8 @@ class Page1_1:
         
         for i in range(30):  # adjust amount of stars here
             self.stars.append(PVector(random(width), random(height)))
+            
+        frameRate(50000)
     
     def render(self):
         cursor()
@@ -29,7 +31,7 @@ class Page1_1:
             self.firework.update()
         self.firework.show()
         
-        image(self.textImage, 100, 200, 500, 130)
+        image(self.textImage, 100, 300, 300, 60)
         if self.firework.done():
             firework = None
             Page.next()

@@ -19,11 +19,11 @@ pages = Page.pages
 
 def setup():
     pageIntro = PageIntro()
-    page0 = Page0()
-    page1 = Page1()
+    #page0 = Page0()
+    #page1 = Page1()
     page1_1 = Page1_1()
-    page2 = Page2()
-    page3 = Page3()
+    #page2 = Page2()
+    #page3 = Page3()
     page4 = Page4()
     size(1000, 800)
     pages.extend([pageIntro, page1_1, page4])
