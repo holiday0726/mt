@@ -15,10 +15,11 @@ class FirstFirework:
         return self.exploded and all(p.done() for p in self.particles)
 
     def update(self):
-        if not self.exploded:
-            self.firework.apply_force(self.gravity)
-            self.firework.update(self.count)
+        
+        self.firework.apply_force(self.gravity)
+        self.firework.update(self.count)
 
+        if not self.exploded:
             if self.count >= 200:
                 self.exploded = True
                 self.explode()
@@ -41,13 +42,11 @@ class FirstFirework:
             self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 38.5, self.sat, 255, True, 15))
             self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 36.5, self.sat, 255, True, 15))
             self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 34.5, self.sat, 255, True, 15))
-            
-
-
+        
 
     def show(self):
-        if not self.exploded:
-            self.firework.show()
+        #if not self.exploded:
+        self.firework.show()
 
         for particle in self.particles:
             particle.show()
