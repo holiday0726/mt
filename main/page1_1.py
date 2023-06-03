@@ -16,7 +16,7 @@ class Page1_1:
     
     def render(self):
         cursor()
-        
+        Page.next()
         colorMode(HSB)
         background(0)
         

@@ -65,6 +65,15 @@ class FirstFireworkParticle:
         else:
               # adjust stroke weight to your needs
         
+            #stroke(0,0,255)
+            posLen = len(self.prev_positions1);
+            strokeWeight(5)
+            stroke(32.5, 255, 255)
+            point(self.prev_positions1[posLen-1].x, self.prev_positions1[posLen-1].y)
+            strokeWeight(4)
+            stroke(42.5, 255, 255)
+            point(self.prev_positions1[posLen-1].x, self.prev_positions1[posLen-1].y)
+            
             if(self.lifespan < 150):
                 strokeWeight(2)
             else:
@@ -95,12 +104,6 @@ class FirstFireworkParticle:
             # If there are more than 10 previous positions, remove the oldest one
             if len(self.prev_positions2) > 20:
                 self.prev_positions2.pop(0)
-            
-            strokeWeight(3)  # Increase stroke weight to make older positions more prominent
-            #stroke(0,0,255)
-            posLen = len(self.prev_positions1);
-            stroke(self.hue + random(-5, 5), self.sat, 255)
-            point(self.prev_positions1[posLen-1].x, self.prev_positions1[posLen-1].y)
 
     def random2D(self):
         angle = random(TWO_PI)
