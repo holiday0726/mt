@@ -40,6 +40,7 @@ def keyPressed():
     if current == 1:
         if not pages[current].firework.exploded:
             pages[current].firework.update()
+            pages[current].increseGauge()
             
     if current == 2:
         myMigyung = pages[current].myMigyung
