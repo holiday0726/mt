@@ -58,7 +58,7 @@ def keyPressed():
             if(myMigyung.y <= height - myMigyung.h):
                 myMigyung.y = myMigyung.y + 10
         
-        
+    
 def mousePressed():
     #if len(pages) - 1 == Page.current:
         #return
