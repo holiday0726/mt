@@ -21,12 +21,14 @@ class Page3_3:
     def drawMangOne(self):
         rectMode(CENTER)
         fill(0)
+        
         beginShape()
         noStroke()
         vertex(0, 0)
         vertex(width, 0)
         vertex(width, height)
         vertex(0, height)
+        
         beginContour()
         for i in range(360, -1, -1):
             rad = radians(i)
@@ -34,12 +36,15 @@ class Page3_3:
             y = height/2 + self.zoom/2 * sin(rad)
             vertex(x, y)
         endContour()
+        
         endShape(CLOSE)
+        
         noFill()
-        stroke(128)
+        stroke(125)
         strokeWeight(10)
         ellipse(width/2, height/2, self.zoom, self.zoom)
-        self.zoom = self.zoom + 10
+        
+        self.zoom = self.zoom + 5
     
     def render(self):
         
@@ -67,5 +72,5 @@ class Page3_3:
     
             if firework.done():
                 self.fireworks.remove(firework)
-                
-        self.drawMangOne()
+        if self.zoom < width + 300:
+            self.drawMangOne()
