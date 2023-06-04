@@ -9,6 +9,7 @@ class Page3_3:
         self.stars = []
         self.fireworks = []
         self.fireworksCnt = 0
+        self.zoom = 150
         self.logoImage = loadImage("logo.png")
         
         for i in range(30):  # adjust amount of stars here
@@ -17,6 +18,29 @@ class Page3_3:
     def appendFireWork(self):
         self.fireworks.append(Firework())
         
+    def drawMangOne(self):
+        rectMode(CENTER)
+        fill(0)
+        beginShape()
+        noStroke()
+        vertex(0, 0)
+        vertex(width, 0)
+        vertex(width, height)
+        vertex(0, height)
+        beginContour()
+        for i in range(360, -1, -1):
+            rad = radians(i)
+            x = width/2 + self.zoom/2 * cos(rad)
+            y = height/2 + self.zoom/2 * sin(rad)
+            vertex(x, y)
+        endContour()
+        endShape(CLOSE)
+        noFill()
+        stroke(128)
+        strokeWeight(10)
+        ellipse(width/2, height/2, self.zoom, self.zoom)
+        self.zoom = self.zoom + 10
+    
     def render(self):
         
         colorMode(HSB)
@@ -43,3 +67,5 @@ class Page3_3:
     
             if firework.done():
                 self.fireworks.remove(firework)
+                
+        self.drawMangOne()
