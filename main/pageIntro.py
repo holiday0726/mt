@@ -4,3 +4,4 @@ class PageIntro:
 
     def render(self):
         image(self.introImage, 0, 0, 1000, 800)
+        

@@ -4,6 +4,7 @@ class Page:
     
     @classmethod
     def next(cls):
+        cls.pages[cls.current] = None
         cls.current+=1
         
     

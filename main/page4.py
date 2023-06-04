@@ -13,8 +13,7 @@ class Page4:
         
         for i in range(30):  # adjust amount of stars here
             self.stars.append(PVector(random(width), random(height)))
-            
-    
+        
     def render(self):
         
         colorMode(HSB)

@@ -32,7 +32,7 @@ class FirstFirework:
         
     def explode(self):
         
-        for _ in range(500):
+        for _ in range(800):
             self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 42.5, 0, 255, True, 30))
             self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 40.5, 0, 255, True, 30))
             

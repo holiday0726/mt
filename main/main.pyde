@@ -7,6 +7,7 @@ from pageIntro import PageIntro
 #from page1 import Page1
 from page1_1 import Page1_1
 from page2_2 import Page2_2
+from page3_3 import Page3_3
 #from page2 import Page2
 #from page3 import Page3
 from page4 import Page4
@@ -24,19 +25,20 @@ def setup():
     #page1 = Page1()
     page1_1 = Page1_1()
     page2_2 = Page2_2()
+    page3_3 = Page3_3()
     #page2 = Page2()
     #page3 = Page3()
-    page4 = Page4()
+    #page4 = Page4()
     size(1000, 800)
-    pages.extend([pageIntro, page1_1, page2_2])
-
+    pages.extend([pageIntro, page1_1, page2_2, page3_3])
+    
 def draw():
     background(0)
     pages[Page.current].render()
 
 def keyPressed():
     current = Page.current;
-    
+                    
     if current == 1:
         if not pages[current].firework.exploded:
             pages[current].firework.update()
@@ -58,25 +60,40 @@ def keyPressed():
         elif (keyCode == DOWN) :
             if(myMigyung.y <= height - myMigyung.h):
                 myMigyung.y = myMigyung.y + 10
-        
+                
+        if keyCode == SHIFT:
+            if myMigyung.x >= 40 and myMigyung.x <= 120:
+                if myMigyung.y == 620:
+                    Page.next()
+    
+    if current == 3:
+        if keyCode == ALT:
+            pages[current].appendFireWork()
+            
+    if keyCode == CONTROL:
+        if current < 3:
+            Page.next()
     
 def mousePressed():
+    
+    current = Page.current;
+    
     #if len(pages) - 1 == Page.current:
         #return
     
     if Page.current == 0:
-        if mouseX > 550 and mouseX < 750:
-            if mouseY > 500 and mouseY < 650:
+        if mouseX > 446 and mouseX < 770:
+            if mouseY > 520 and mouseY < 680:
                 noCursor()
                 Page.next()
         
-    if Page.current == 1:
+    if current == 1:
         #Page.next()
         pass
         #rocket = pages[Page.current].rocket
         #if rocket.x < mouseX < rocket.x + rocket.w and rocket.y - rocket.h/2 < mouseY < rocket.y + rocket.h/2:
             #Page.next()
-    if Page.current == 2:
+    if current == 2:
         if(500 <= mouseY ):
             pages[Page.current].makeMigyung2(mouseX, mouseY)
     # else:
