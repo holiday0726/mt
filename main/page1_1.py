@@ -28,7 +28,7 @@ class Page1_1:
         self.builW = 0
         self.builH = 0
         
-        frameRate(50000)
+        frameRate(60)
     
     def renderImage(self, content): 
         self.currentImage = loadImage(content)

@@ -5,7 +5,7 @@ from page import Page
 
 class Page3:
     def __init__(self):
-        self.frame_rate = 8000
+        #self.frame_rate = 8000
         self.content = Content()
         self.migyung = Migyung()
         self.rocket = Rocket()
@@ -13,7 +13,7 @@ class Page3:
         self.rocket.load_image()
         self.rockets = []
         self.migyungs = []
-        frameRate(self.frame_rate)
+        #frameRate(self.frame_rate)
         
         self.textImage = loadImage("text2.png")
         

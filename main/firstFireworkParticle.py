@@ -63,9 +63,9 @@ class FirstFireworkParticle:
             
         else:
             if self.lifespan < 150:
-                self.draw_line(5, 2, 2)
+                self.draw_line(5, 5, 2)
             elif self.lifespan < 170:
-                self.draw_line(12, 2, 1)
+                self.draw_line(10, 3, 1)
             elif self.lifespan < 190:
                 self.draw_line(9, 1, 1)
             elif self.lifespan < 210:
