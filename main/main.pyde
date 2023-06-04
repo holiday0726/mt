@@ -36,7 +36,7 @@ def draw():
     pages[Page.current].render()
 
 def keyPressed():
-    current = Page.current;
+    current = Page.current
                     
     if current == 1:
         if not pages[current].firework.exploded:
@@ -72,10 +72,19 @@ def keyPressed():
     if keyCode == CONTROL:
         if current < 3:
             Page.next()
+
+def mouseWheel(event):
     
+    current = Page.current
+    if Page.current == 3:
+        if event.count < 0:
+            pages[current].zoom += 10
+        else:
+            pages[current].zoom -= 10
+
 def mousePressed():
     
-    current = Page.current;
+    current = Page.current
     
     #if len(pages) - 1 == Page.current:
         #return

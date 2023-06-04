@@ -44,7 +44,7 @@ class Page3_3:
         strokeWeight(10)
         ellipse(width/2, height/2, self.zoom, self.zoom)
         
-        self.zoom = self.zoom + 5
+        #self.zoom = self.zoom + 10
     
     def render(self):
         
@@ -72,5 +72,5 @@ class Page3_3:
     
             if firework.done():
                 self.fireworks.remove(firework)
-        if self.zoom < width + 300:
-            self.drawMangOne()
+        #if self.zoom < width:
+        self.drawMangOne()

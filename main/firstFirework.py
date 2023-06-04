@@ -38,7 +38,7 @@ class FirstFirework:
             self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 40.5, 0, 255, True, 30))
             self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 38.5, 0, 255, True, 30))
             
-        for _ in range(100):
+        for _ in range(80):
             self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 42.5, self.sat, 255, True, 20))
             self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 40.5, self.sat, 255, True, 20))
             self.particles.append(FirstFireworkParticle(self.firework.pos.x, self.firework.pos.y, 38.5, self.sat, 255, True, 15))
