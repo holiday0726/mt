@@ -1,5 +1,3 @@
-
-
 class FirstFireworkParticle:
     def __init__(self, x, y, hue, sat,b, exploded, explodedMultval):
         self.pos = PVector(x, y)

@@ -1,21 +1,20 @@
-from migyung import Migyung
-from rocket import Rocket
+#from migyung import Migyung
+#from rocket import Rocket
 from page import Page
-from content import Content
+#from content import Content
 from pageIntro import PageIntro
 #from page0 import Page0
 #from page1 import Page1
+#from page2 import Page2
+#from page3 import Page3
+#from page4 import Page4
 from page1_1 import Page1_1
 from page2_2 import Page2_2
 from page3_3 import Page3_3
-#from page2 import Page2
-#from page3 import Page3
-from page4 import Page4
-from firstFirework import FirstFirework
 
-migyung = Migyung()
-rocket = Rocket()
-content = Content()
+#migyung = Migyung()
+#rocket = Rocket()
+#content = Content()
 pageIntro = 0
 pages = Page.pages
 
@@ -23,12 +22,12 @@ def setup():
     pageIntro = PageIntro()
     #page0 = Page0()
     #page1 = Page1()
-    page1_1 = Page1_1()
-    page2_2 = Page2_2()
-    page3_3 = Page3_3()
     #page2 = Page2()
     #page3 = Page3()
     #page4 = Page4()
+    page1_1 = Page1_1()
+    page2_2 = Page2_2()
+    page3_3 = Page3_3()
     size(1000, 800)
     pages.extend([pageIntro, page1_1, page2_2, page3_3])
     
