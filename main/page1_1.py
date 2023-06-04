@@ -7,6 +7,7 @@ class Page1_1:
         self.stars = []
         self.firework = FirstFirework()
         self.currentImage = loadImage("text4.png")
+        self.buildingImage = loadImage("building.png")
         for i in range(30):  # adjust amount of stars here
             self.stars.append(PVector(random(width), random(height)))
             
@@ -21,6 +22,11 @@ class Page1_1:
         self.imageY = 250
         self.imageW = 0
         self.imageH = 0
+        
+        self.builX = 0
+        self.builY = 0
+        self.builW = 0
+        self.builH = 0
         
         frameRate(50000)
     
@@ -60,7 +66,14 @@ class Page1_1:
             self.gaugePercent == 1.05
             self.gaugeExist = False
             
-        
+    
+    def drawBuilding(self):
+        self.builX=0
+        self.builY=600
+        self.builW=1000
+        self.builH=202
+        image(self.buildingImage, self.builX, self.builY, self.builW, self.builH)
+    
     def render(self):
         cursor()
         #Page.next()
@@ -98,7 +111,7 @@ class Page1_1:
         self.firework.show()
         
         image(self.currentImage, self.imageX, self.imageY, self.imageW, self.imageH)
-        
+        self.drawBuilding()
         if self.firework.done():
             firework = None
             Page.next()
