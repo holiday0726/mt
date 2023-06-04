@@ -41,6 +41,14 @@ class FirstFireworkParticle:
     def done(self):
         return self.lifespan < 30
 
+
+    def draw_line(self, start, step, weight):
+        strokeWeight(weight)
+        for i in range(start, len(self.prev_positions2), step):
+            stroke(self.hue + random(-5, 5), 255, i *(self.lifespan * 0.05) + 30)
+            line(self.prev_positions2[i-step].x, self.prev_positions2[i-step].y,
+                self.prev_positions2[i].x, self.prev_positions2[i].y)
+            
     def show(self):
         if not self.exploded:
             posLen = len(self.prev_positions1);
@@ -54,30 +62,18 @@ class FirstFireworkParticle:
             point(self.pos.x, self.pos.y)
             
         else:
-            if(self.lifespan < 150):
-                strokeWeight(2)
-                for i in range(1, len(self.prev_positions2), 5):
-                    stroke(self.hue+ random(-5, 5), 255, i *(self.lifespan * 0.05) + 30)
-                    line(self.prev_positions2[i-5].x, self.prev_positions2[i-5].y, 
-                        self.prev_positions2[i].x, self.prev_positions2[i].y)
-            elif(self.lifespan < 170):
-                strokeWeight(1)
-                for i in range(10, len(self.prev_positions2), 2):
-                    stroke(self.hue+ random(-5, 5), 255, i *(self.lifespan * 0.05) + 30)
-                    line(self.prev_positions2[i-2].x, self.prev_positions2[i-2].y, 
-                        self.prev_positions2[i].x, self.prev_positions2[i].y)
-            elif(self.lifespan < 210):
-                strokeWeight(1)
-                for i in range(5, len(self.prev_positions2), 1):
-                    stroke(self.hue+ random(-5, 5), 255, i *(self.lifespan * 0.05) + 30)
-                    line(self.prev_positions2[i-1].x, self.prev_positions2[i-1].y, 
-                         self.prev_positions2[i].x, self.prev_positions2[i].y)
+            if self.lifespan < 150:
+                self.draw_line(1, 2, 2)
+            elif self.lifespan < 170:
+                self.draw_line(12, 2, 1)
+            elif self.lifespan < 190:
+                self.draw_line(9, 1, 1)
+            elif self.lifespan < 210:
+                self.draw_line(6, 1, 1)
+            elif self.lifespan < 230:
+                self.draw_line(3, 1, 1)
             else:
-                strokeWeight(1)
-                for i in range(1, len(self.prev_positions2), 1):
-                    stroke(self.hue+ random(-5, 5), 255, i *(self.lifespan * 0.05) + 30)
-                    line(self.prev_positions2[i-1].x, self.prev_positions2[i-1].y, 
-                         self.prev_positions2[i].x, self.prev_positions2[i].y)
+                self.draw_line(1, 1, 1)
             
             
             if self.sat == 0:
