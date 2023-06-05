@@ -51,9 +51,9 @@ class Page2_2:
         self._camera = CustomImage()
         self._camera.load_image("camera")
         self._camera.set_x(720)\
-                    .set_y(670)\
-                    .set_w(53)\
-                    .set_h(38)
+                    .set_y(550)\
+                    .set_w(70)\
+                    .set_h(100)
         self.isCapture = False
         
     def makeMigyung2(self, x , y):
@@ -95,10 +95,9 @@ class Page2_2:
         for migyung in self.migyungs:
             migyung.render()
         
-        
+        self._camera.render()
         self.myMigyung.render()
         self.mangone.render()
-        self._camera.render()
         
         # Draw stars
         stroke(255)

@@ -58,9 +58,11 @@ def keyPressed():
                 myMigyung.x = myMigyung.x + 10
         elif (keyCode == UP) :
             if(myMigyung.y >= 500):
+                myMigyung.load_image('migyung11')
                 myMigyung.y = myMigyung.y - 10
         elif (keyCode == DOWN) :
             if(myMigyung.y <= height - myMigyung.h):
+                myMigyung.load_image('migyung9')
                 myMigyung.y = myMigyung.y + 10
                 
         if keyCode == SHIFT:
@@ -69,7 +71,7 @@ def keyPressed():
                     Page.next()
         
             if myMigyung.x >= 700 and myMigyung.x <= 800:
-                if myMigyung.y == 620:
+                if myMigyung.y >= 520 and myMigyung.y <= 580:
                     saveFrame("capture.png")
                     fill(255,0,200)
                     rect(0,0, width, height)

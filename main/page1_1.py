@@ -2,6 +2,7 @@ from content import Content
 from page import Page
 from firstFirework import FirstFirework
 
+
 class Page1_1:
     def __init__(self):
         self.stars = []
