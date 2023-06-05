@@ -109,10 +109,13 @@ class Page2_2:
         if self.isCapture:
             stroke(255)
             strokeWeight(50)
+            fill(0)
             rect(200,200,600,400)
             image(loadImage("capture.png"), 200, 200, 600, 400)
             strokeWeight(10)
             circle(810,200,75)
+            fill(0)
             line(820,210,800,190)
             line(800,210,820,190)
+            noFill()
             

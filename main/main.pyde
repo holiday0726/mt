@@ -71,6 +71,9 @@ def keyPressed():
             if myMigyung.x >= 700 and myMigyung.x <= 800:
                 if myMigyung.y == 620:
                     saveFrame("capture.png")
+                    fill(255,0,200)
+                    rect(0,0, width, height)
+                    noFill()
                     pages[current].isCapture = True
             
     
