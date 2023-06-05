@@ -46,7 +46,7 @@ class Page3_3:
         strokeWeight(30)
         ellipse(self.mangoneX, self.mangoneY, self.zoom, self.zoom)
         
-        #self.zoom = self.zoom + 10
+        self.zoom = self.zoom + 10
     
     def render(self):
         

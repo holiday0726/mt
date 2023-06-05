@@ -44,6 +44,9 @@ def keyPressed():
             pages[current].increseGauge()
             
     if current == 2:
+        if pages[current].isCapture:
+            return
+        
         myMigyung = pages[current].myMigyung
         if (keyCode == LEFT) :
             if(myMigyung.x >= 0):
@@ -64,6 +67,12 @@ def keyPressed():
             if myMigyung.x >= 40 and myMigyung.x <= 120:
                 if myMigyung.y == 620:
                     Page.next()
+        
+            if myMigyung.x >= 700 and myMigyung.x <= 800:
+                if myMigyung.y == 620:
+                    saveFrame("capture.png")
+                    pages[current].isCapture = True
+            
     
     if current == 3:
         if keyCode == ALT:
@@ -110,7 +119,10 @@ def mousePressed():
         #if rocket.x < mouseX < rocket.x + rocket.w and rocket.y - rocket.h/2 < mouseY < rocket.y + rocket.h/2:
             #Page.next()
     if current == 2:
-        if(500 <= mouseY ):
+        if 500 <= mouseY :
             pages[Page.current].makeMigyung2(mouseX, mouseY)
+        if mouseX >= 800 and mouseX <=820:
+            if mouseY >= 190 and mouseY <= 210:
+                pages[Page.current].isCapture = False
     # else:
     #     Page.next()

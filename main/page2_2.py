@@ -36,7 +36,7 @@ class Page2_2:
             
         self.myMigyung = CustomImage()
         self.myMigyung.load_image("migyung9")
-        self.myMigyung.set_x(800)\
+        self.myMigyung.set_x(500)\
             .set_y(600)\
             .set_w(130/2)\
             .set_h(190/2)
@@ -47,6 +47,14 @@ class Page2_2:
             .set_y(550)\
             .set_w(170)\
             .set_h(190)
+            
+        self._camera = CustomImage()
+        self._camera.load_image("camera")
+        self._camera.set_x(720)\
+                    .set_y(670)\
+                    .set_w(53)\
+                    .set_h(38)
+        self.isCapture = False
         
     def makeMigyung2(self, x , y):
         migyung = CustomImage()
@@ -87,10 +95,24 @@ class Page2_2:
         for migyung in self.migyungs:
             migyung.render()
         
+        
         self.myMigyung.render()
         self.mangone.render()
+        self._camera.render()
+        
         # Draw stars
         stroke(255)
-        strokeWeight(2)
+        strokeWeight(random(2,3))
         for s in self.stars:
             point(s.x, s.y)
+            
+        if self.isCapture:
+            stroke(255)
+            strokeWeight(50)
+            rect(200,200,600,400)
+            image(loadImage("capture.png"), 200, 200, 600, 400)
+            strokeWeight(10)
+            circle(810,200,75)
+            line(820,210,800,190)
+            line(800,210,820,190)
+            
