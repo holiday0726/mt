@@ -9,8 +9,10 @@ class Page3_3:
         self.stars = []
         self.fireworks = []
         self.fireworksCnt = 0
-        self.zoom = 150
+        self.zoom = 300
         self.logoImage = loadImage("logo.png")
+        self.mangoneX = width / 2
+        self.mangoneY = height / 2
         
         for i in range(30):  # adjust amount of stars here
             self.stars.append(PVector(random(width), random(height)))
@@ -32,8 +34,8 @@ class Page3_3:
         beginContour()
         for i in range(360, -1, -1):
             rad = radians(i)
-            x = width/2 + self.zoom/2 * cos(rad)
-            y = height/2 + self.zoom/2 * sin(rad)
+            x = self.mangoneX + self.zoom/2 * cos(rad)
+            y = self.mangoneY + self.zoom/2 * sin(rad)
             vertex(x, y)
         endContour()
         
@@ -41,8 +43,8 @@ class Page3_3:
         
         noFill()
         stroke(125)
-        strokeWeight(10)
-        ellipse(width/2, height/2, self.zoom, self.zoom)
+        strokeWeight(30)
+        ellipse(self.mangoneX, self.mangoneY, self.zoom, self.zoom)
         
         #self.zoom = self.zoom + 10
     

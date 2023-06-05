@@ -68,6 +68,14 @@ def keyPressed():
     if current == 3:
         if keyCode == ALT:
             pages[current].appendFireWork()
+        if keyCode == LEFT :
+            pages[current].mangoneX = pages[current].mangoneX - 20
+        if keyCode == RIGHT :
+            pages[current].mangoneX = pages[current].mangoneX + 20
+        if keyCode == UP :
+            pages[current].mangoneY = pages[current].mangoneY - 20
+        if keyCode == DOWN :
+            pages[current].mangoneY = pages[current].mangoneY + 20
             
     if keyCode == CONTROL:
         if current < 3:
