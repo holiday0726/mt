@@ -8,10 +8,13 @@ class Page1_1:
         self.stars = []
         self.firework = FirstFirework()
         self.currentImage = loadImage("text4.png")
-        self.buildingImage = loadImage("building.png")
+        self.currentBuilding = 0
+        self.buildingList = ["building1.png","building2.png","building3.png","building4.png"]
+        self.buildingImage = loadImage("building1.png")
         for i in range(30):  # adjust amount of stars here
             self.stars.append(PVector(random(width), random(height)))
-            
+        
+        self.backgroundColor = 0
         self.gaugeExist = True;
         self.gaugePercent = 0.00
         self.gaugeHeight = 300   
@@ -67,19 +70,32 @@ class Page1_1:
             self.gaugePercent == 1.05
             self.gaugeExist = False
             
+    def backPlus(self):
+        if self.backgroundColor <=45:
+            self.backgroundColor += 3
+        
+    def backMinus(self):
+        if self.backgroundColor >=3:
+            self.backgroundColor -= 3
+        
+    def changeBuliding(self):
+        self.currentBuilding +=1
+        if (self.currentBuilding==3):
+            self.currentBuilding =0
     
     def drawBuilding(self):
         self.builX=0
         self.builY=600
         self.builW=1000
         self.builH=202
+        self.buildingImage = loadImage(self.buildingList[self.currentBuilding])
         image(self.buildingImage, self.builX, self.builY, self.builW, self.builH)
     
     def render(self):
         cursor()
         #Page.next()
         colorMode(HSB)
-        background(0)
+        background(self.backgroundColor)
 
         #Draw gauge
         
