@@ -1,6 +1,7 @@
 from content import Content
 from page import Page
 from firstFirework import FirstFirework
+from processing.sound import SoundFile
 
 class Page1_1:
     def __init__(self):
@@ -12,7 +13,8 @@ class Page1_1:
         self.buildingImage = loadImage("building1.png")
         for i in range(30):  # adjust amount of stars here
             self.stars.append(PVector(random(width), random(height)))
-        
+        self.sf = SoundFile(this,"explosion.mp3")
+       
         self.backgroundColor = 0
         self.gaugeExist = True;
         self.gaugePercent = 0.00
@@ -66,8 +68,9 @@ class Page1_1:
             self.renderImage('text3.png')
             
         if self.gaugePercent >= 0.995:
-            self.gaugePercent == 1.05
+            self.gaugePercent == 1.1
             self.gaugeExist = False
+            self.sf.play()
             
     def backPlus(self):
         if self.backgroundColor <=45:
