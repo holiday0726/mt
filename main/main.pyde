@@ -96,6 +96,13 @@ def keyPressed():
 def mouseWheel(event):
     
     current = Page.current
+    
+    if Page.current == 1:
+        if event.count < 0:
+            pages[current].backPlus()
+        else:
+            pages[current].backMinus()
+            
     if Page.current == 3:
         if event.count < 0:
             pages[current].zoom += 10
@@ -116,8 +123,8 @@ def mousePressed():
                 Page.next()
         
     if current == 1:
-        #Page.next()
-        pass
+        if mouseY>600:
+            pages[Page.current].changeBuliding()
         #rocket = pages[Page.current].rocket
         #if rocket.x < mouseX < rocket.x + rocket.w and rocket.y - rocket.h/2 < mouseY < rocket.y + rocket.h/2:
             #Page.next()
