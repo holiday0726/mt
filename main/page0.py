@@ -1,18 +1,19 @@
-from content import Content
-from migyung import Migyung
-from rocket import Rocket
-from page import Page
+from Page import Page
+from CustomImage import CustomImage
 
 class Page0:
     def __init__(self):
-        self.frame_rate = 500
-        self.content = Content()
-        self.migyung = Migyung()
-        self.rocket = Rocket()
-        self.migyung.load_image()
-        self.rocket.load_image()
-        frameRate(self.frame_rate)
-
+        pass
+        
     def render(self):
-        self.rocket.render().change_dir()
-        self.migyung.set_x(mouseX).set_y(mouseY).render()
+        CustomImage().setX(0).setY(0).setW(width).setH(height).setImage("intro").render()
+    
+    def keyPressed(self):
+        pass
+        
+    def mousePressed(self):
+        if mouseX > 446 and mouseX < 770 and mouseY > 520 and mouseY < 680:
+            noCursor()
+            Page.next()
+        
+    

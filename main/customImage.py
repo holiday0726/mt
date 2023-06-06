@@ -6,23 +6,23 @@ class CustomImage:
         self.w = 130
         self.h = 190
 
-    def load_image(self, imageName):
-        self.image = loadImage(imageName+".png")
+    def setImage(self, imageName):
+        self.image = loadImage('./resource/'+imageName+".png")
         return self
 
-    def set_x(self, x):
+    def setX(self, x):
         self.x = x
         return self
 
-    def set_y(self, y):
+    def setY(self, y):
         self.y = y
         return self
     
-    def set_w(self, w):
+    def setW(self, w):
         self.w = w
         return self
 
-    def set_h(self, h):
+    def setH(self, h):
         self.h = h
         return self
 

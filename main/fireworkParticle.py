@@ -1,43 +1,43 @@
 class FireworkParticle:
-    def __init__(self, x, y, hue, exploded):
-        self.pos = PVector(x, y)
-        self.exploded = exploded
-        self.lifespan = 255
+    def __init__(self, x, y, hue, isExploded):
+        self.position = PVector(x, y)
+        self.isExploded = isExploded
+        self.lifeSpan = 255
         self.hue = hue
 
-        if not self.exploded:
-            self.vel = PVector(random(-3, 3), random(-18, -5))
+        if not self.isExploded:
+            self.velocity = PVector(random(-3, 3), random(-18, -5))
         else:
-            self.vel = self.random2D()
-            self.vel.mult(random(2, random(20,30)))
+            self.velocity = self.random2D()
+            self.velocity.mult(random(2, random(20,30)))
 
-        self.acc = PVector(0, 0)
+        self.acceleration = PVector(0, 0)
 
-    def apply_force(self, force):
-        self.acc.add(force)
+    def applyForce(self, force):
+        self.acceleration.add(force)
 
     def update(self):
-        if self.exploded:
-            self.vel.mult(0.9)
-            self.lifespan -= 4
+        if self.isExploded:
+            self.velocity.mult(0.9)
+            self.lifeSpan -= 4
 
-        self.vel.add(self.acc)
-        self.pos.add(self.vel)
-        self.acc.mult(0)
+        self.velocity.add(self.acceleration)
+        self.position.add(self.velocity)
+        self.acceleration.mult(0)
 
-    def done(self):
-        return self.lifespan < 0
+    def isDone(self):
+        return self.lifeSpan < 0
 
     def show(self):
-        if not self.exploded:
+        if not self.isExploded:
             strokeWeight(4)
             stroke(self.hue, 255, 255)
         else:
             strokeWeight(random(4))
-            stroke(self.hue, 255, 255, self.lifespan)
+            stroke(self.hue, 255, 255, self.lifeSpan)
 
-        point(self.pos.x, self.pos.y)
-    
+        point(self.position.x, self.position.y)
+
     def random2D(self):
         angle = random(TWO_PI)
         return PVector(cos(angle), sin(angle))

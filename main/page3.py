@@ -1,59 +1,80 @@
-from content import Content
-from migyung import Migyung
-from rocket import Rocket
-from page import Page
+from Page import Page
+from CustomImage import CustomImage
+from Star import Star
+from Firework import Firework
 
 class Page3:
     def __init__(self):
-        #self.frame_rate = 8000
-        self.content = Content()
-        self.migyung = Migyung()
-        self.rocket = Rocket()
-        self.migyung.load_image()
-        self.rocket.load_image()
-        self.rockets = []
-        self.migyungs = []
-        #frameRate(self.frame_rate)
+        self.star = Star(width, height)
+        self.fireworks = []
+        self.fireworksCnt = 0
+        self.zoom = 300
+        self.logoImage = CustomImage().setX(250).setY(350).setW(500).setH(100).setImage("logo")
         
-        self.textImage = loadImage("text2.png")
-        
-        self.stars = []
-        for i in range(30):  # adjust amount of stars here
-            self.stars.append(PVector(random(width), random(height)))
+        self.mangoneX = width / 2
+        self.mangoneY = height / 2
+    
+    def makeFireWork(self):
+        if self.fireworksCnt <= 15:
+            if random(1) < 0.1:
+                self.fireworks.append(Firework(random(width), height, PVector(0, 0.2)))
+                self.fireworksCnt = self.fireworksCnt +1
             
-        for i in range(10):
-            rand = random(500, 1000)
-            self.rockets.append(Rocket())
-            self.migyungs.append(Migyung())
-            
-            self.migyungs[i].load_image() \
-                .set_x(self.rockets[i].x + self.migyungs[i].w) \
-                .set_y(self.rockets[i].y + self.migyungs[i].h) \
-                .render()
-                    
-            self.rockets[i].load_image() \
-                .set_x_dir(2) \
-                .set_y_dir(-2) \
-                .set_x(random(width) - rand/2) \
-                .set_y(rand) \
-                .render() \
-                .particle()
+    def drawMangOne(self):
+        rectMode(CENTER)
+        fill(0)
         
+        beginShape()
+        noStroke()
+        vertex(0, 0)
+        vertex(width, 0)
+        vertex(width, height)
+        vertex(0, height)
+        
+        beginContour()
+        for i in range(360, -1, -1):
+            rad = radians(i)
+            x = self.mangoneX + self.zoom/2 * cos(rad)
+            y = self.mangoneY + self.zoom/2 * sin(rad)
+            vertex(x, y)
+        endContour()
+        
+        endShape(CLOSE)
+        
+        noFill()
+        stroke(125)
+        strokeWeight(30)
+        ellipse(self.mangoneX, self.mangoneY, self.zoom, self.zoom)
+        
+        self.zoom = self.zoom + 10
+    
     def render(self):
         
         # Draw stars
-        stroke(255)
-        strokeWeight(2)
-        for s in self.stars:
-            point(s.x, s.y)
+        self.star.render()
+        self.logoImage.render()
         
-        image(self.textImage, 100, 200, 500, 130)
+        # Draw fireworks
+        self.makeFireWork()
+    
+        for firework in self.fireworks[:]:
+            isDone = firework.render()
+            if isDone: self.fireworks.remove(firework)
+            
+        self.drawMangOne()
         
-        for i, value in enumerate(self.migyungs):
-            self.migyungs[i].set_x(self.rockets[i].x + self.migyungs[i].w) \
-                .set_y(self.rockets[i].y + self.migyungs[i].h) \
-                .render()
-            self.rockets[i].render().particle()
         
-        if all(rocket.is_collide_by_top() or rocket.is_collide_by_right() for rocket in self.rockets):
-            Page.next()
+    def keyPressed(self):
+        if keyCode == ALT:
+            self.fireworks.append(Firework(random(width), height, PVector(0, 0.2)))
+        if keyCode == LEFT:
+            self.mangoneX -= 20
+        elif keyCode == RIGHT:
+            self.mangoneX += 20
+        elif keyCode == UP:
+            self.mangoneY -= 20
+        elif keyCode == DOWN:
+            self.mangoneY += 20
+
+    def mousePressed(self):
+        pass

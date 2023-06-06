@@ -1,52 +1,59 @@
-from fireworkParticle import FireworkParticle
+from FireworkParticle import FireworkParticle
 from processing.sound import SoundFile
 
 class Firework:
     def __init__(self, x, y, gravity):
         self.hue = random(255)
         self.gravity = gravity
-        self.firework = FireworkParticle(x, y, self.hue, False)
+        self.fireworkParticle = FireworkParticle(x, y, self.hue, False)
         self.exploded = False
         self.isSoundPlayed = False
         self.soundFile = SoundFile(this, "explosion.mp3")
         self.particles = []
 
-    def done(self):
-        return self.exploded and all(p.done() for p in self.particles)
+    def isDone(self):
+        return self.exploded and all(particle.isDone() for particle in self.particles)
 
     def update(self):
         if not self.exploded:
-            self.firework.apply_force(self.gravity)
-            self.firework.update()
+            self.fireworkParticle.applyForce(self.gravity)
+            self.fireworkParticle.update()
 
-            print(self.firework.vel.y)
-            if self.firework.vel.y >= -1.2:
+            print(self.fireworkParticle.velocity.y)
+            if self.fireworkParticle.velocity.y >= -1.2:
                 if not self.isSoundPlayed:
                     self.isSoundPlayed = True
                     self.soundFile.play()
-            if self.firework.vel.y >= 0:
+            if self.fireworkParticle.velocity.y >= 0:
                 self.exploded = True
                 self.explode()
 
         for particle in self.particles:
-            particle.apply_force(self.gravity)
+            particle.applyForce(self.gravity)
             particle.update()
 
     def explode(self):
         for _ in range(300):
-            p = FireworkParticle(self.firework.pos.x, self.firework.pos.y, self.hue, True)
-            self.particles.append(p)
+            particle = FireworkParticle(self.fireworkParticle.position.x, self.fireworkParticle.position.y, self.hue, True)
+            self.particles.append(particle)
 
     def show(self):
         if not self.exploded:
-            self.firework.show()
+            self.fireworkParticle.show()
 
         for particle in self.particles:
             particle.show()
-                
-    def setGradient(x, y, w, h, c1, c2):
+            
+    def render(self):
+        colorMode(HSB)
+        self.update()
+        self.show()
+        colorMode(RGB)
+        return self.isDone()
+
+    def setGradient(self, x, y, w, h, color1, color2):
         noFill()
         for i in range(h):
-            inter = map(i, 0, h, 0, 1)
-            c = lerpColor(c1, c2, inter)
-            stroke(c)
+            interpolation = map(i, 0, h, 0, 1)
+            color = lerpColor(color1, color2, interpolation)
+            stroke(color)
