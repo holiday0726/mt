@@ -1,7 +1,7 @@
-from Page import Page
-from CustomImage import CustomImage
+from page import Page
+from customImage import CustomImage
 from Star import Star
-from Firework import Firework
+from firework import Firework
 
 class Page3:
     def __init__(self):

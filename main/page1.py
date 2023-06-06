@@ -1,5 +1,5 @@
-from Page import Page
-from FirstFirework import FirstFirework
+from page import Page
+from firstFirework import FirstFirework
 from Star import Star
 from Building import Building
 from Text import Text

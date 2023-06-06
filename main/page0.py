@@ -1,5 +1,5 @@
-from Page import Page
-from CustomImage import CustomImage
+from page import Page
+from customImage import CustomImage
 
 class Page0:
     def __init__(self):
