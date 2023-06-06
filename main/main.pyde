@@ -1,11 +1,11 @@
+add_library("sound")
+from processing.sound import SoundFile
+
 from Page import Page
 from Page0 import Page0
 from Page1 import Page1
 from Page2 import Page2
 from Page3 import Page3
-from processing.sound import SoundFile
-
-add_library("sound")
 backgroundColor = 0
 
 def setup():
