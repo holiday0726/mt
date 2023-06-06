@@ -9,7 +9,6 @@ class FirstFirework:
         self.gravity = PVector(0, 0.2)
         self.firework = FirstFireworkParticle(width / 2 - 50, height, self.hue, self.saturation, self.brightness, False, 50)
         self.exploded = False
-        self.isSoundPlayed = False
         self.soundFile = SoundFile(this, "firstFirework.wav")
         self.particles = []
         self.count = 0
@@ -22,10 +21,6 @@ class FirstFirework:
             self.firework.applyForce(self.gravity)
             self.firework.update(self.count)
             if self.count >= 199:
-                if not self.isSoundPlayed:
-                    self.isSoundPlayed = True
-                    self.soundFile.play()
-                self.exploded = True
                 self.explode()
             
             self.count += 1
@@ -35,12 +30,15 @@ class FirstFirework:
             particle.update(0)
         
     def explode(self):
-        for _ in range(400):
+        self.soundFile.play()
+        self.exploded = True
+            
+        for i in range(400):
             self.addParticle(42.5, 0, 30)
             self.addParticle(40.5, 0, 30)
             self.addParticle(38.5, 0, 30)
-        
-        for _ in range(80):
+            
+        for i in range(80):
             self.addParticle(42.5, self.saturation, 20)
             self.addParticle(40.5, self.saturation, 20)
             self.addParticle(38.5, self.saturation, 15)

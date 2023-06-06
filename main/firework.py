@@ -18,25 +18,26 @@ class Firework:
         if not self.exploded:
             self.fireworkParticle.applyForce(self.gravity)
             self.fireworkParticle.update()
-
-            print(self.fireworkParticle.velocity.y)
-            if self.fireworkParticle.velocity.y >= -1.2:
-                if not self.isSoundPlayed:
-                    self.isSoundPlayed = True
-                    self.soundFile.play()
-            if self.fireworkParticle.velocity.y >= 0:
-                self.exploded = True
-                self.explode()
-
-        for particle in self.particles:
-            particle.applyForce(self.gravity)
-            particle.update()
-
+            self.explode()
+        else:
+            for particle in self.particles:
+                particle.applyForce(self.gravity)
+                particle.update()
+    
+    # Added conditional due to sync issue
+    def playSound(self):
+        if not self.isSoundPlayed:
+            if self.fireworkParticle.velocity.y >= -1.2: 
+                self.isSoundPlayed = True
+                self.soundFile.play()
+                
     def explode(self):
-        for _ in range(300):
-            particle = FireworkParticle(self.fireworkParticle.position.x, self.fireworkParticle.position.y, self.hue, True)
-            self.particles.append(particle)
-
+        self.playSound()
+        if self.fireworkParticle.velocity.y >= 0:
+            self.exploded = True
+            for i in range(300):
+                self.particles.append(FireworkParticle(self.fireworkParticle.position.x, self.fireworkParticle.position.y, self.hue, True))
+        
     def show(self):
         if not self.exploded:
             self.fireworkParticle.show()
