@@ -34,7 +34,6 @@ def setup():
 def draw():
     background(0)
     pages[Page.current].render()
-
 def keyPressed():
     current = Page.current
                     
