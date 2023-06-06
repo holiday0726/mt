@@ -6,10 +6,10 @@ class Building:
         self.current = 0
         self.customImage = CustomImage().setX(x).setY(y).setW(w).setH(h).setImage("building1")
     
+    def render(self):
+        self.customImage.render()
+        
     def next(self):
         self.current = self.current+1
         if self.current == len(self.buildingList): self.current = 0
         self.customImage.setImage(self.buildingList[self.current])
-    
-    def render(self):
-        self.customImage.render()

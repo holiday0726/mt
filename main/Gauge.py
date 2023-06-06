@@ -8,15 +8,6 @@ class Gauge:
         self.x = x
         self.y = y 
     
-    def increse(self):
-        self.count += 1
-        self.persent = self.count*10 / 2 * 0.1
-        
-        if self.count == 200:
-            self.exist = False
-        
-        return self.persent
-    
     def render(self):
         if self.exist:
             colorMode(RGB)
@@ -31,3 +22,14 @@ class Gauge:
             textAlign(CENTER, CENTER)
             fill(52)
             text(str(int(self.persent)), self.x + self.w/2, self.y + self.h/2)
+            
+    def increse(self):
+        self.count += 1
+        self.persent = self.count*10 / 2 * 0.1
+        
+        if self.count == 200:
+            self.exist = False
+        
+        return self.persent
+    
+    

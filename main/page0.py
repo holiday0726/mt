@@ -8,6 +8,10 @@ class Page0:
     def render(self):
         CustomImage().setX(0).setY(0).setW(width).setH(height).setImage("intro").render()
     
+    #####################
+    #event Function Area#
+    #####################
+    
     def keyPressed(self):
         pass
         

@@ -6,6 +6,10 @@ class CustomImage:
         self.w = 130
         self.h = 190
 
+    def render(self):
+        image(self.image, self.x, self.y, self.w, self.h)
+        return self
+    
     def setImage(self, imageName):
         self.image = loadImage('./resource/'+imageName+".png")
         return self
@@ -24,8 +28,4 @@ class CustomImage:
 
     def setH(self, h):
         self.h = h
-        return self
-
-    def render(self):
-        image(self.image, self.x, self.y, self.w, self.h)
         return self

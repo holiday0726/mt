@@ -13,6 +13,14 @@ class FirstFirework:
         self.particles = []
         self.count = 0
 
+    def render(self):
+        colorMode(HSB)
+        if self.exploded:
+            self.update()
+        self.show()
+        colorMode(RGB)
+        return self.isDone()
+    
     def isDone(self):
         return self.exploded and all(particle.isDone() for particle in self.particles)
 
@@ -53,11 +61,3 @@ class FirstFirework:
 
         for particle in self.particles:
             particle.show()
-            
-    def render(self):
-        colorMode(HSB)
-        if self.exploded:
-            self.update()
-        self.show()
-        colorMode(RGB)
-        return self.isDone()

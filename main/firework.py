@@ -11,6 +11,13 @@ class Firework:
         self.soundFile = SoundFile(this, "explosion.mp3")
         self.particles = []
 
+    def render(self):
+        colorMode(HSB)
+        self.update()
+        self.show()
+        colorMode(RGB)
+        return self.isDone()
+    
     def isDone(self):
         return self.exploded and all(particle.isDone() for particle in self.particles)
 
@@ -44,13 +51,7 @@ class Firework:
 
         for particle in self.particles:
             particle.show()
-            
-    def render(self):
-        colorMode(HSB)
-        self.update()
-        self.show()
-        colorMode(RGB)
-        return self.isDone()
+    
 
     def setGradient(self, x, y, w, h, color1, color2):
         noFill()

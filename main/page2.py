@@ -18,7 +18,32 @@ class Page2:
         self.makeMigyung(400,650)
         self.makeMigyung(600,650)
         self.isCapture = False
+            
+    def render(self):
+    
+        self.makeFireWork()
         
+        for firework in self.fireworks[:]:
+            isDone = firework.render()
+            if isDone: self.fireworks.remove(firework)
+            
+        self.star.render()
+        self.unduk.render()
+
+        for migyung in self.migyungs:
+            migyung.render()
+        
+        self.camera.render()
+        self.myMigyung.render()
+        self.mangone.render()
+        
+        if self.isCapture:
+            self.makeCaptureWindow()
+            
+    ######################
+    #define Function Area#
+    ######################
+    
     def makeMigyung(self, x , y):
         
         self.migyungCnt = self.migyungCnt + 1
@@ -46,28 +71,7 @@ class Page2:
         line(820,210,800,190)
         line(800,210,820,190)
         noFill()
-            
-    def render(self):
-    
-        self.makeFireWork()
         
-        for firework in self.fireworks[:]:
-            isDone = firework.render()
-            if isDone: self.fireworks.remove(firework)
-            
-        self.star.render()
-        self.unduk.render()
-
-        for migyung in self.migyungs:
-            migyung.render()
-        
-        self.camera.render()
-        self.myMigyung.render()
-        self.mangone.render()
-        
-        if self.isCapture:
-            self.makeCaptureWindow()
-            
     def moveMyMigyung(self):
         if keyCode == LEFT and self.myMigyung.x >= 0:
             self.myMigyung.setImage('migyung9')
@@ -81,7 +85,11 @@ class Page2:
         elif keyCode == DOWN and self.myMigyung.y <= height - self.myMigyung.h:
             self.myMigyung.setImage('migyung9')
             self.myMigyung.y += 10
-            
+    
+    #####################
+    #event Function Area#
+    #####################
+    
     def keyPressed(self):
         if not self.isCapture:
             self.moveMyMigyung()

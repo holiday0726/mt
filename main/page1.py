@@ -15,6 +15,22 @@ class Page1:
        
         self.backgroundColor = 0
         
+    def render(self):
+        cursor()
+
+        self.gauge.render()
+        self.star.render()
+
+        isDone = self.firework.render()
+        if isDone: firework = None; Page.next()
+        
+        self.text.render()
+        self.building.render()
+    
+    ######################
+    #define Function Area#
+    ######################
+    
     def increseGauge(self):
         self.gaugePercent = str(self.gauge.increse())
         
@@ -28,19 +44,11 @@ class Page1:
             self.text.setW(569).setH(35).next()
         elif self.gaugePercent == str(100.0):
             self.gauge.exist = False
-
-    def render(self):
-        cursor()
-
-        self.gauge.render()
-        self.star.render()
-
-        isDone = self.firework.render()
-        if isDone: firework = None; Page.next()
-        
-        self.text.render()
-        self.building.render()
-        
+    
+    #####################
+    #event Function Area#
+    #####################
+    
     def keyPressed(self):
         if not self.firework.exploded:
             self.firework.update()

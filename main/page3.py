@@ -13,6 +13,25 @@ class Page3:
         
         self.mangoneX = width / 2
         self.mangoneY = height / 2
+
+    def render(self):
+        
+        # Draw stars
+        self.star.render()
+        self.logoImage.render()
+        
+        # Draw fireworks
+        self.makeFireWork()
+    
+        for firework in self.fireworks[:]:
+            isDone = firework.render()
+            if isDone: self.fireworks.remove(firework)
+            
+        self.drawMangOne()
+        
+    ######################
+    #define Function Area#
+    ######################
     
     def makeFireWork(self):
         if self.fireworksCnt <= 15:
@@ -47,23 +66,11 @@ class Page3:
         ellipse(self.mangoneX, self.mangoneY, self.zoom, self.zoom)
         
         self.zoom = self.zoom + 10
+        
+    #####################
+    #event Function Area#
+    #####################
     
-    def render(self):
-        
-        # Draw stars
-        self.star.render()
-        self.logoImage.render()
-        
-        # Draw fireworks
-        self.makeFireWork()
-    
-        for firework in self.fireworks[:]:
-            isDone = firework.render()
-            if isDone: self.fireworks.remove(firework)
-            
-        self.drawMangOne()
-        
-        
     def keyPressed(self):
         if keyCode == ALT:
             self.fireworks.append(Firework(random(width), height, PVector(0, 0.2)))

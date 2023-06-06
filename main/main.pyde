@@ -6,6 +6,7 @@ from Page0 import Page0
 from Page1 import Page1
 from Page2 import Page2
 from Page3 import Page3
+
 backgroundColor = 0
 
 def setup():
