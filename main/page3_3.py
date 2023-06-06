@@ -65,7 +65,7 @@ class Page3_3:
         # Draw fireworks
         if self.fireworksCnt <= 15:
             if random(1) < 0.1:
-                self.fireworks.append(Firework())
+                self.fireworks.append(Firework(random(width), height, PVector(0, 0.2)))
                 self.fireworksCnt = self.fireworksCnt +1
     
         for firework in self.fireworks[:]:

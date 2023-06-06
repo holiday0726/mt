@@ -2,7 +2,7 @@ from content import Content
 from page import Page
 from firstFirework import FirstFirework
 from processing.sound import SoundFile
-add_library("sound")
+
 
 class Page1_1:
     def __init__(self):
@@ -14,7 +14,7 @@ class Page1_1:
         self.buildingImage = loadImage("building1.png")
         for i in range(30):  # adjust amount of stars here
             self.stars.append(PVector(random(width), random(height)))
-        self.sf = SoundFile(this,"explosion.mp3")
+        self.sf = SoundFile(this, "explosion.mp3")
        
         self.backgroundColor = 0
         self.gaugeExist = True;

@@ -1,11 +1,14 @@
 from fireworkParticle import FireworkParticle
+from processing.sound import SoundFile
 
 class Firework:
-    def __init__(self):
+    def __init__(self, x, y, gravity):
         self.hue = random(255)
-        self.gravity = PVector(0, 0.2)
-        self.firework = FireworkParticle(random(width), height, self.hue, False)
+        self.gravity = gravity
+        self.firework = FireworkParticle(x, y, self.hue, False)
         self.exploded = False
+        self.isSoundPlayed = False
+        self.soundFile = SoundFile(this, "explosion.mp3")
         self.particles = []
 
     def done(self):
@@ -16,6 +19,11 @@ class Firework:
             self.firework.apply_force(self.gravity)
             self.firework.update()
 
+            print(self.firework.vel.y)
+            if self.firework.vel.y >= -1.2:
+                if not self.isSoundPlayed:
+                    self.isSoundPlayed = True
+                    self.soundFile.play()
             if self.firework.vel.y >= 0:
                 self.exploded = True
                 self.explode()

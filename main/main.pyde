@@ -1,3 +1,5 @@
+add_library("sound")
+
 #from migyung import Migyung
 #from rocket import Rocket
 from page import Page
@@ -11,6 +13,7 @@ from pageIntro import PageIntro
 from page1_1 import Page1_1
 from page2_2 import Page2_2
 from page3_3 import Page3_3
+from processing.sound import SoundFile
 
 #migyung = Migyung()
 #rocket = Rocket()
@@ -30,6 +33,8 @@ def setup():
     page3_3 = Page3_3()
     size(1000, 800)
     pages.extend([pageIntro, page1_1, page2_2, page3_3])
+    baseSound = SoundFile(this, "oseann.wav")
+    baseSound.play()
     
 def draw():
     background(0)

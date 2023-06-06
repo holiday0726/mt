@@ -81,7 +81,7 @@ class Page2_2:
         
         # Draw fireworks
         if random(1) < 0.07:
-            self.fireworks.append(Firework())
+            self.fireworks.append(Firework(random(width), height-200, PVector(0, 0.3)))
     
         for firework in self.fireworks[:]:
             firework.update()
