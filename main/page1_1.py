@@ -1,13 +1,9 @@
 from content import Content
 from page import Page
 from firstFirework import FirstFirework
-<<<<<<< HEAD
-
-
-=======
 from processing.sound import SoundFile
 add_library("sound")
->>>>>>> e028bd3c610ea680cd849497b0d445e6bfed9881
+
 class Page1_1:
     def __init__(self):
         self.stars = []
