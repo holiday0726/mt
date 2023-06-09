@@ -9,7 +9,7 @@ class Page4:
         self.stars = []
         self.fireworks = []
 
-        self.logoImage = loadImage("logo.png")
+        self.logoImage = loadImage("logo1.png")
         
         for i in range(30):  # adjust amount of stars here
             self.stars.append(PVector(random(width), random(height)))
@@ -21,6 +21,7 @@ class Page4:
         #setGradient(0, 0, width, height, color(0, 0, 0), color(0, 0, 64))
         background(0)
         
+       
         image(self.logoImage, 200, 350, 200, 50)
         # Draw stars
         stroke(255)

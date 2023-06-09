@@ -1,4 +1,4 @@
-from fireworkParticle import FireworkParticle
+from FireworkParticle import FireworkParticle
 from processing.sound import SoundFile
 
 class Firework:

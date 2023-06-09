@@ -18,10 +18,10 @@ class Gauge:
             fill(255, 255, 0)
             noStroke()
             rect(self.x, self.y + (1-(self.persent*0.01)) * self.h, self.w, (self.persent*0.01) * self.h, 10)
-            textSize(20)
-            textAlign(CENTER, CENTER)
-            fill(52)
-            text(str(int(self.persent)), self.x + self.w/2, self.y + self.h/2)
+            # textSize(20)
+            # textAlign(CENTER, CENTER)
+            # fill(52)
+            # text(str(int(self.persent)), self.x + self.w/2, self.y + self.h/2)
             
     def increse(self):
         self.count += 1

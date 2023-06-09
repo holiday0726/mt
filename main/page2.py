@@ -1,6 +1,6 @@
-from page import Page
-from customImage import CustomImage
-from firework import Firework
+from Page import Page
+from CustomImage import CustomImage
+from Firework import Firework
 from Star import Star
 
 class Page2:

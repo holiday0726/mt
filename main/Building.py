@@ -1,4 +1,4 @@
-from customImage import CustomImage
+from CustomImage import CustomImage
 
 class Building:
     def __init__(self, x, y, w, h):
