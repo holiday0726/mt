@@ -10,7 +10,11 @@ from Page3 import Page3
 def setup():
     size(1000, 800)
     frameRate(60)
-    SoundFile(this, "oseann.wav").play()
+    
+    backgroundSound = SoundFile(this, "oseann.wav")
+    backgroundSound.amp(0.5)
+    backgroundSound.play()
+    
     Page.extendPage([Page0(), Page1(), Page2(), Page3()])
     
 def draw():

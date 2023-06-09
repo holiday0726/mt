@@ -9,6 +9,7 @@ class Firework:
         self.exploded = False
         self.isSoundPlayed = False
         self.soundFile = SoundFile(this, "explosion.mp3")
+        self.soundFile.amp(0.3);
         self.particles = []
 
     def render(self):

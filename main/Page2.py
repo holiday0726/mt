@@ -2,16 +2,22 @@ from Page import Page
 from CustomImage import CustomImage
 from Firework import Firework
 from Star import Star
+from processing.sound import SoundFile
 
 class Page2:
     def __init__(self):
         self.star = Star(width, 400)
         self.fireworks = []
-
+        self.fireworksCnt = 0
         self.myMigyung = CustomImage().setX(500).setY(600).setW(130/2).setH(190/2).setImage("migyung9")
         self.mangone = CustomImage().setX(100).setY(550).setW(170).setH(190).setImage("mangone")
         self.camera = CustomImage().setX(720).setY(550).setW(70).setH(100).setImage("camera")
         self.unduk = CustomImage().setX(0).setY(400).setW(1000).setH(400).setImage("unduk")
+        
+        self.cameraSoundFile = SoundFile(this, "camera.mp3")
+        self.cameraSoundFile.amp(1.0);
+        self.mangoneSoundFile = SoundFile(this, "mangone.mp3")
+        self.mangoneSoundFile.amp(1.0);
         
         self.migyungCnt = 1
         self.migyungs = []
@@ -56,15 +62,17 @@ class Page2:
         self.migyungs.append(migyung)
     
     def makeFireWork(self):
-        if random(1) < 0.07:
-            self.fireworks.append(Firework(random(width), height-200, PVector(0, 0.3)))
+        if self.fireworksCnt <= 15:
+            if random(1) < 0.1:
+                self.fireworks.append(Firework(random(width), 600, PVector(0, 0.3)))
+                self.fireworksCnt = self.fireworksCnt +1
     
     def makeCaptureWindow(self):
         stroke(255)
         strokeWeight(50)
         fill(0)
         rect(200,200,600,400)
-        image(loadImage("./resource/capture.png"), 200, 200, 600, 400)
+        image(loadImage("./resource/capture.png"), 200, 200, 400, 400)
         strokeWeight(10)
         circle(810,200,75)
         fill(0)
@@ -93,11 +101,15 @@ class Page2:
     def keyPressed(self):
         if not self.isCapture:
             self.moveMyMigyung()
+            if keyCode == ALT:
+                self.fireworks.append(Firework(random(width), 400, PVector(0, 0.3)))
             if keyCode == SHIFT:
                 if self.myMigyung.x >= 40 and self.myMigyung.x <= 120 and self.myMigyung.y == 620:
+                    self.mangoneSoundFile.play()
                     Page.next()
                 if self.myMigyung.x >= 700 and self.myMigyung.x <= 800 and self.myMigyung.y >= 520 and self.myMigyung.y <= 580:
                     saveFrame("./resource/capture.png")
+                    self.cameraSoundFile.play()
                     fill(255)
                     rect(0,0, width, height)
                     noFill()
