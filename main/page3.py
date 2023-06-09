@@ -1,7 +1,7 @@
-from page import Page
-from customImage import CustomImage
+from Page import Page
+from CustomImage import CustomImage
 from Star import Star
-from firework import Firework
+from Firework import Firework
 
 class Page3:
     def __init__(self):
@@ -10,14 +10,15 @@ class Page3:
         self.fireworksCnt = 0
         self.zoom = 300
         self.logoImage = CustomImage().setX(250).setY(350).setW(500).setH(100).setImage("logo")
-        
         self.mangoneX = width / 2
         self.mangoneY = height / 2
-
-    def render(self):
+        self.logoOpacity = 0
         
+    def render(self):
         # Draw stars
-        self.star.render()
+        self.star.render() 
+         
+        tint(255,self.logoOpacity)
         self.logoImage.render()
         
         # Draw fireworks
@@ -32,6 +33,12 @@ class Page3:
     ######################
     #define Function Area#
     ######################
+    
+    def increseTint(self):
+        if self.logoOpacity <=250: self.logoOpacity += 10
+    
+    def decreseTint(self):
+        if self.logoOpacity >=5: self.logoOpacity -= 10
     
     def makeFireWork(self):
         if self.fireworksCnt <= 15:
