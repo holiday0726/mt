@@ -138,10 +138,10 @@ class Page3:
     ######################
     
     def increseTint(self):
-        if self.logoOpacity <=250: self.logoOpacity += 10
+        if self.logoOpacity <=250: self.logoOpacity += 5
     
     def decreseTint(self):
-        if self.logoOpacity >=5: self.logoOpacity -= 10
+        if self.logoOpacity >=5: self.logoOpacity -= 5
     
     def makeFireWork(self):
         if self.fireworksCnt <= 15:

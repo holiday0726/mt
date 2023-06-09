@@ -64,7 +64,7 @@ class Page2:
     def makeFireWork(self):
         if self.fireworksCnt <= 15:
             if random(1) < 0.1:
-                self.fireworks.append(Firework(random(width), 600, PVector(0, 0.3)))
+                self.fireworks.append(Firework(random(width), 400, PVector(0, 0.4)))
                 self.fireworksCnt = self.fireworksCnt +1
     
     def makeCaptureWindow(self):
@@ -72,7 +72,7 @@ class Page2:
         strokeWeight(50)
         fill(0)
         rect(200,200,600,400)
-        image(loadImage("./resource/capture.png"), 200, 200, 400, 400)
+        image(loadImage("./resource/capture.png"), 200, 200, 600, 400)
         strokeWeight(10)
         circle(810,200,75)
         fill(0)
@@ -102,7 +102,7 @@ class Page2:
         if not self.isCapture:
             self.moveMyMigyung()
             if keyCode == ALT:
-                self.fireworks.append(Firework(random(width), 400, PVector(0, 0.3)))
+                self.fireworks.append(Firework(random(width), 400, PVector(0, 0.4)))
             if keyCode == SHIFT:
                 if self.myMigyung.x >= 40 and self.myMigyung.x <= 120 and self.myMigyung.y == 620:
                     self.mangoneSoundFile.play()
