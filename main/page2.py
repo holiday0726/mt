@@ -106,3 +106,10 @@ class Page2:
     def mousePressed(self):
         if mouseY >= 500 : self.makeMigyung(mouseX, mouseY)
         if mouseX >= 800 and mouseX <=820 and mouseY >= 190 and mouseY <= 210: self.isCapture = False
+        
+    def mouseWheel(self, event):
+        global backgroundColor
+        if event.count < 0:
+            if backgroundColor <=30: backgroundColor += 3
+        else:
+            if backgroundColor >=3: backgroundColor -= 3

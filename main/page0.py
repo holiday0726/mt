@@ -20,4 +20,9 @@ class Page0:
             noCursor()
             Page.next()
         
-    
+    def mouseWheel(self, event):
+        global backgroundColor
+        if event.count < 0:
+            if backgroundColor <=30: backgroundColor += 3
+        else:
+            if backgroundColor >=3: backgroundColor -= 3

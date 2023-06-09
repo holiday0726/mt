@@ -25,23 +25,8 @@ def keyPressed():
     Page.getCurrentPage().keyPressed()
 
 def mouseWheel(event):
-    global backgroundColor
-    
-    if Page.currentPageNum == 3:
-        if event.count < 0:
-            Page.getCurrentPage().increseTint()
-        else:
-            Page.getCurrentPage().decreseTint()
+    Page.getCurrentPage().mouseWheel(event)
         
-    else:
-        if event.count < 0:
-            if backgroundColor <=30: backgroundColor += 3
-        else:
-            if backgroundColor >=3: backgroundColor -= 3   
-        
-    
-    
-   
 
 def mousePressed():    
     Page.getCurrentPage().mousePressed()
