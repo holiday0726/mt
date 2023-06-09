@@ -1,6 +1,7 @@
 class Page:
     pages = []
     currentPageNum = 0
+    backgroundColor = 0
     
     @classmethod
     def next(cls):

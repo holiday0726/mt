@@ -93,7 +93,7 @@ class Page3:
     def mousePressed(self):
         pass
         
-    def mouseWheel(event):
+    def mouseWheel(self, event):
         if Page.currentPageNum == 3:
             if event.count < 0:
                 Page.getCurrentPage().increseTint()

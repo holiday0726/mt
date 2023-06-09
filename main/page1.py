@@ -58,9 +58,7 @@ class Page1:
         if mouseY > 600: self.building.next()
         
     def mouseWheel(self, event):
-        global backgroundColor
-        
         if event.count < 0:
-            if backgroundColor <=30: backgroundColor += 3
+            if Page.backgroundColor <=30: Page.backgroundColor += 3
         else:
-            if backgroundColor >=3: backgroundColor -= 3
+            if Page.backgroundColor >=3: Page.backgroundColor -= 3

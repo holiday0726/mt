@@ -108,8 +108,7 @@ class Page2:
         if mouseX >= 800 and mouseX <=820 and mouseY >= 190 and mouseY <= 210: self.isCapture = False
         
     def mouseWheel(self, event):
-        global backgroundColor
         if event.count < 0:
-            if backgroundColor <=30: backgroundColor += 3
+            if Page.backgroundColor <=30: Page.backgroundColor += 3
         else:
-            if backgroundColor >=3: backgroundColor -= 3
+            if Page.backgroundColor >=3: Page.backgroundColor -= 3

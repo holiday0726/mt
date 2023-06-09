@@ -7,8 +7,6 @@ from Page1 import Page1
 from Page2 import Page2
 from Page3 import Page3
 
-backgroundColor = 0
-
 def setup():
     size(1000, 800)
     frameRate(60)
@@ -16,8 +14,7 @@ def setup():
     Page.extendPage([Page0(), Page1(), Page2(), Page3()])
     
 def draw():
-    global backgroundColor
-    background(backgroundColor)
+    background(Page.backgroundColor)
     Page.getCurrentPage().render()
 
 def keyPressed():
