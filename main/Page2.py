@@ -18,6 +18,8 @@ class Page2:
         self.cameraSoundFile.amp(1.0);
         self.mangoneSoundFile = SoundFile(this, "mangone.mp3")
         self.mangoneSoundFile.amp(1.0);
+        self.clickSoundFile = SoundFile(this, "clickPlace.mp3")
+        self.clickSoundFile.amp(1.0);
         
         self.migyungCnt = 1
         self.migyungs = []
@@ -60,6 +62,8 @@ class Page2:
         
         migyung = CustomImage().setX(x-w/2).setY(y-h/2).setW(w).setH(h).setImage(imageName)
         self.migyungs.append(migyung)
+        
+        
     
     def makeFireWork(self):
         if self.fireworksCnt <= 15:
@@ -117,7 +121,9 @@ class Page2:
                     self.isCapture = True
                     
     def mousePressed(self):
-        if mouseY >= 500 : self.makeMigyung(mouseX, mouseY)
+        if mouseY >= 500 :
+            self.makeMigyung(mouseX, mouseY)
+            self.clickSoundFile.play()
         if mouseX >= 800 and mouseX <=820 and mouseY >= 190 and mouseY <= 210: self.isCapture = False
         
     def mouseWheel(self, event):
