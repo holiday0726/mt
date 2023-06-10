@@ -106,6 +106,7 @@ class Page2:
             if keyCode == SHIFT:
                 if self.myMigyung.x >= 40 and self.myMigyung.x <= 120 and self.myMigyung.y == 620:
                     self.mangoneSoundFile.play()
+                    frameRate(30)
                     Page.next()
                 if self.myMigyung.x >= 700 and self.myMigyung.x <= 800 and self.myMigyung.y >= 520 and self.myMigyung.y <= 580:
                     saveFrame("./resource/capture.png")

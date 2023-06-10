@@ -15,7 +15,11 @@ class Page3:
         self.mangoneY = height / 2
         self.isWheelControl = False
         self.logoOpacity = 0
-
+        self.isStopFireworkLeft = False
+        self.isStopFireworkRight = False
+        self.isStopFireworkBottom = False
+        self.isStopFireworkTop = False
+        
         self.particleSystem1 = ParticleSystem(PVector(150, 350))
         self.particleSystem2 = ParticleSystem(PVector(800, 300))
         self.particleSystem3 = ParticleSystem(PVector(0, height+30))
@@ -32,14 +36,11 @@ class Page3:
         self.particleSystem14 = ParticleSystem(PVector(-30, 500))
         self.particleSystem15 = ParticleSystem(PVector(width+30, 300))
         self.particleSystem16 = ParticleSystem(PVector(width+30, 500))
-        
+    
     def render(self):
         # Draw stars
-        frameRate(30)
+        
         self.star.render()
-
-        # Draw fireworks
-        #self.makeFireWork()
     
         #for firework in self.fireworks[:]:
         #    isDone = firework.render()
@@ -56,76 +57,13 @@ class Page3:
         #self.particleSystem2.run(138,43,200)
         #self.particleSystem2.run(255,255,255)
         
-        self.particleSystem3.addParticle(PVector(random(0, 0.3), -0.8), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem3.addParticle(PVector(random(0, 0.3), -0.8), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem3.run(255,120,153)
-        self.particleSystem3.run(255,255,255)
         
-        self.particleSystem4.addParticle(PVector(random(-0.3, 0.3), -0.5), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem4.addParticle(PVector(random(-0.3, 0.3), -0.5), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem4.run(138,43,200)
-        self.particleSystem4.run(255,255,255)
+        self.runFireworkTop(self.isStopFireworkTop)
+        self.runFireworkBottom(self.isStopFireworkBottom)
+        self.runFireworkLeft(self.isStopFireworkLeft)
+        self.runFireworkRight(self.isStopFireworkRight)
         
-        self.particleSystem5.addParticle(PVector(random(-0.3, 0.3), -0.8), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem5.addParticle(PVector(random(-0.3, 0.3), -0.8), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem5.run(255,120,153)
-        self.particleSystem5.run(255,255,255)
-        
-        self.particleSystem6.addParticle(PVector(random(-0.3, 0.3), -0.5), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem6.addParticle(PVector(random(-0.3, 0.3), -0.5), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem6.run(138,43,200)
-        self.particleSystem6.run(255,255,255)
-        
-        self.particleSystem7.addParticle(PVector(random(-0.3, 0), -0.8), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem7.addParticle(PVector(random(-0.3, 0), -0.8), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem7.run(255,120,153)
-        self.particleSystem7.run(255,255,255)
-        
-        self.particleSystem8.addParticle(PVector(random(0, 0.3), 0.3), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem8.addParticle(PVector(random(0, 0.3), 0.3), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem8.run(255,120,153)
-        self.particleSystem8.run(255,255,255)
-        
-        self.particleSystem9.addParticle(PVector(random(-0.3, 0.3), 0.6), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem9.addParticle(PVector(random(-0.3, 0.3), 0.6), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem9.run(138,43,200)
-        self.particleSystem9.run(255,255,255)
-        
-        self.particleSystem10.addParticle(PVector(random(-0.3, 0.3), 0.3), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem10.addParticle(PVector(random(-0.3, 0.3), 0.3), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem10.run(255,120,153)
-        self.particleSystem10.run(255,255,255)
-        
-        self.particleSystem11.addParticle(PVector(random(-0.3, 0.3), 0.6), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem11.addParticle(PVector(random(-0.3, 0.3), 0.6), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem11.run(138,43,200)
-        self.particleSystem11.run(255,255,255)
-        
-        self.particleSystem12.addParticle(PVector(random(-0.3, 0), 0.3), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem12.addParticle(PVector(random(-0.3, 0), 0.3), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem12.run(255,120,153)
-        self.particleSystem12.run(255,255,255)
-        
-        self.particleSystem13.addParticle(PVector(0.3, random(-0.3, 0.3)), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem13.addParticle(PVector(0.3, random(-0.3, 0.3)), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem13.run(138,43,200)
-        self.particleSystem13.run(255,255,255)
-        
-        self.particleSystem14.addParticle(PVector(0.5, random(-0.3, 0.3)), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem14.addParticle(PVector(0.5, random(-0.3, 0.3)), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem14.run(138,43,200)
-        self.particleSystem14.run(255,255,255)
-        
-        self.particleSystem15.addParticle(PVector(-0.3, random(-0.3, 0.3)), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem15.addParticle(PVector(-0.3, random(-0.3, 0.3)), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem15.run(138,43,200)
-        self.particleSystem15.run(255,255,255)
-        
-        self.particleSystem16.addParticle(PVector(-0.5, random(-0.3, 0.3)), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem16.addParticle(PVector(-0.5, random(-0.3, 0.3)), PVector(random(-10, 10), random(0, 5)))
-        self.particleSystem16.run(138,43,200)
-        self.particleSystem16.run(255,255,255)
-        
+    
         tint(255,self.logoOpacity)
         self.logoImage.render()
         
@@ -142,13 +80,96 @@ class Page3:
     
     def decreseTint(self):
         if self.logoOpacity >=5: self.logoOpacity -= 5
-    
-    def makeFireWork(self):
-        if self.fireworksCnt <= 15:
-            if random(1) < 0.1:
-                self.fireworks.append(Firework(random(width), height, PVector(0, 0.2)))
-                self.fireworksCnt = self.fireworksCnt +1
+
+
+    def runFireworkBottom(self, isStop=False):
+        
+        particleSystems = [self.particleSystem3, self.particleSystem4, self.particleSystem5, self.particleSystem6, self.particleSystem7]
+        
+        if isStop:
+            for particleSystem in particleSystems:
+                particleSystem.stop()
+            return
+        
+        isLong = True
+        for particleSystem in particleSystems:
+            acc =  PVector(random(-0.3, 0.3), -0.8) if isLong else PVector(random(-0.3, 0.3), -0.5) 
+            vel = PVector(random(-10, 10), random(0, 5))
             
+            particleSystem.addParticle(acc.copy(), vel.copy())
+            particleSystem.addParticle(acc.copy(), vel.copy())
+            
+            if isLong:  particleSystem.run(255,120,153)
+            else :   particleSystem.run(138,43,200)
+            
+            particleSystem.run(255,255,255)
+            isLong = not isLong
+            
+    def runFireworkTop(self, isStop=False):
+        
+        particleSystems = [self.particleSystem8, self.particleSystem9, self.particleSystem10, self.particleSystem11, self.particleSystem12]
+        
+        if isStop:
+            for particleSystem in particleSystems:
+                particleSystem.stop()
+            return
+        
+        isLong = True
+        for particleSystem in particleSystems:
+            acc =  PVector(random(-0.3, 0.3), 0.6) if isLong else PVector(random(-0.3, 0.3), 0.3) 
+            vel = PVector(random(-10, 10), random(0, 5))
+            
+            particleSystem.addParticle(acc.copy(), vel.copy())
+            particleSystem.addParticle(acc.copy(), vel.copy())
+            
+            if isLong:  particleSystem.run(255,120,153)
+            else :   particleSystem.run(138,43,200)
+            
+            particleSystem.run(255,255,255)
+            isLong = not isLong
+        
+    def runFireworkLeft(self, isStop=False):
+        
+        particleSystems = [self.particleSystem13, self.particleSystem14]
+        
+        if isStop:
+            for particleSystem in particleSystems:
+                particleSystem.stop()
+            return
+        
+        isLong = False
+        for particleSystem in particleSystems:
+            acc =  PVector(0.5, random(-0.3, 0.3)) if isLong else PVector(0.3, random(-0.3, 0.3))
+            vel = PVector(random(-10, 10), random(0, 5))
+            
+            particleSystem.addParticle(acc.copy(), vel.copy())
+            particleSystem.addParticle(acc.copy(), vel.copy())
+            
+            particleSystem.run(138,43,200)
+            particleSystem.run(255,255,255)
+            isLong = not isLong
+        
+    def runFireworkRight(self, isStop=False):
+        
+        particleSystems = [self.particleSystem15, self.particleSystem16]
+        
+        if isStop:
+            for particleSystem in particleSystems:
+                particleSystem.stop()
+            return
+        
+        isLong = False
+        for particleSystem in particleSystems:
+            acc =  PVector(-0.5, random(-0.3, 0.3)) if isLong else PVector(-0.3, random(-0.3, 0.3))
+            vel = PVector(random(-10, 10), random(0, 5))
+            
+            particleSystem.addParticle(acc.copy(), vel.copy())
+            particleSystem.addParticle(acc.copy(), vel.copy())
+            
+            particleSystem.run(138,43,200)
+            particleSystem.run(255,255,255)
+            isLong = not isLong
+    
     def drawMangOne(self):
         rectMode(CENTER)
         fill(0)
@@ -183,15 +204,24 @@ class Page3:
     
     def keyPressed(self):
         if keyCode == ALT:
-            self.fireworks.append(Firework(random(width), height, PVector(0, 0.2)))
+            if self.isStopFireworkLeft and self.isStopFireworkRight and self.isStopFireworkTop and self.isStopFireworkBottom:
+                self.isStopFireworkTop, self.isStopFireworkBottom = False, False
+                self.isStopFireworkLeft, self.isStopFireworkRight = False, False
+                self.isWheelControl = True
+                self.logoOpacity = 255
+            else:
+                self.isStopFireworkTop, self.isStopFireworkBottom = True, True
+                self.isStopFireworkLeft, self.isStopFireworkRight = True, True
+                self.isWheelControl = True
+                self.logoOpacity = 0
         if keyCode == LEFT:
-            self.mangoneX -= 20
+            self.isStopFireworkLeft = not self.isStopFireworkLeft
         elif keyCode == RIGHT:
-            self.mangoneX += 20
+            self.isStopFireworkRight = not self.isStopFireworkRight
         elif keyCode == UP:
-            self.mangoneY -= 20
+            self.isStopFireworkTop = not self.isStopFireworkTop
         elif keyCode == DOWN:
-            self.mangoneY += 20
+            self.isStopFireworkBottom = not self.isStopFireworkBottom
 
     def mousePressed(self):
         pass

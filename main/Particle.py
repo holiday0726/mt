@@ -23,5 +23,5 @@ class Particle:
         fill(r, g, b, self.lifespan)
         ellipse(self.position.x, self.position.y, 8, 8)
 
-    def is_dead(self):
+    def isDead(self):
         return self.lifespan < 0.0
